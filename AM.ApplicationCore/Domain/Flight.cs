@@ -15,6 +15,8 @@ namespace AM.ApplicationCore.Domain
         public string Departure { get; set; }
         public DateTime EffectiveTime { get; set;}
         
-        public IList<Plane> Planes{ get; set;}
+        public Plane Plane{ get; set;}
+        public IList<Passenger> Passengers { get; set; }
+
     }
 }
