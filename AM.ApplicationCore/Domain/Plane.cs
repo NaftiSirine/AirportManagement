@@ -32,7 +32,15 @@ namespace AM.ApplicationCore.Domain
         public DateTime ManufactureDate { get; set; }
         public int PlaneId { get; set; }    
         public PlaneType PlaneType { get; set; }   
+        public Plane(int capacity, DateTime manufactureDate)
+        {
+            Capacity = capacity;    
+            ManufactureDate = manufactureDate;  
+        }
 
+        public Plane()
+        {
+        }
     }
 }
     
