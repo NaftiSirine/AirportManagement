@@ -14,7 +14,8 @@ namespace AM.ApplicationCore.Domain
         public string BirthDay { get; set;}    
         public int TelNumber { get; set;} 
         public string EmailAddress { get; set;}  
-        public int Id { get; set;}  
-            
+        public int Id { get; set;}
+        public IList<Flight> Flights { get; set; }
+
     }
 }

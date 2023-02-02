@@ -12,7 +12,6 @@ namespace AM.ApplicationCore.Domain
         //   string name; 
         //   public string getName (){  return name; } 
         //   public void   setName(string name) { name = name; }
-        //   //int twa walet Object Object inclus string wl int w kol
         //   //prop + 2 tab : light version
         //   public int MyProperty { get; set; }
         ////propfull  : full version

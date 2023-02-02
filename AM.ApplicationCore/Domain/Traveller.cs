@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace AM.ApplicationCore.Domain
 {
-    public class Traveller
+    public class Traveller : Passenger
     {
         public string Nationality{ get; set; }   
         public string HealthInformation { get; set; }    
