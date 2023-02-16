@@ -23,8 +23,12 @@ namespace AM.ApplicationCore.Services
             //    }
             //}
             //return dates;
-            var query = from flight in flights where flight.Destination == destination select flight.FlightDate;
-            return query.ToList();
+
+            // Link  
+            //var query = from flight in flights where flight.Destination == destination select flight.FlightDate;
+           // return query.ToList();
+
+            return flights.Where(flight => flight.Destination == destination).Select(flight => flight.FlightDate).ToList();
         }
         public void ShowFlightDetails(Plane plane)
         {
@@ -46,19 +50,23 @@ namespace AM.ApplicationCore.Services
         }
         public double DurationAverage(string destination)
         {
-            var query = (from flight in flights where flight.Destination.Equals(destination) select flight.EstimatedDuration).Average();
-            return query;
+           // var query = (from flight in flights where flight.Destination.Equals(destination) select flight.EstimatedDuration).Average();
+           // return query;
+            return flights.Where(f => flight.Destination.Equals(destination)).Select(f => f.EstimatedDuration).Average();
+
 
         }
         public IList<Flight> OrderedDurationFlights()
         {
-            var query = (from flight in flights select flight).OrderByDescending(flight => flight.EstimatedDuration);
-            return query.ToList();  
+           // var query = (from flight in flights select flight).OrderByDescending(flight => flight.EstimatedDuration);
+            //return query.ToList();
+            return flights.OrderByDescending(flight => flight.EstimatedDuration).ToList();
         }
-        public IList<Traveller> SeniorTravellers(Flight flight)
+        public IEnumerable<Traveller> SeniorTravellers(Flight flight)
         {
-            var query = (from f in flight.Passengers.OfType<Traveller>() orderby f.BirthDay descending select f).Take(3);
-            return query.ToList(); 
+          //  var query = (from f in flight.Passengers.OfType<Traveller>() orderby f.BirthDay descending select f).Take(3);
+          //  return query;
+            return flights.OfType<Traveller>().OrderByDescending(f=>f.BirthDay).Take(3);   
         }
     }
 }
