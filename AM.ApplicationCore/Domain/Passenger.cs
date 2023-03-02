@@ -12,7 +12,7 @@ namespace AM.ApplicationCore.Domain
         public string PassportNumber { get; set; } 
         public string FirstName { get; set;}
         public string LastName { get; set;} 
-        public string BirthDay { get; set;}    
+        public DateTime BirthDate { get; set;}    
         public int TelNumber { get; set;} 
         public string EmailAddress { get; set;}  
         public int Id { get; set;}

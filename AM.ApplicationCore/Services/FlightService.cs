@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace AM.ApplicationCore.Services
 {
-    internal class FlightService : IServiceFlight
+    public class FlightService : IServiceFlight
     {
         public IList<Flight> flights = new List<Flight>();
         public Flight flight = new Flight();
@@ -64,9 +64,9 @@ namespace AM.ApplicationCore.Services
         }
         public IEnumerable<Traveller> SeniorTravellers(Flight flight)
         {
-          //  var query = (from f in flight.Passengers.OfType<Traveller>() orderby f.BirthDay descending select f).Take(3);
-          //  return query;
-            return flights.OfType<Traveller>().OrderByDescending(f=>f.BirthDay).Take(3);   
+            //  var query = (from f in flight.Passengers.OfType<Traveller>() orderby f.BirthDate descending select f).Take(3);
+            //  return query;
+            return flights.OfType<Traveller>().OrderByDescending(f=>f.BirthDate).Take(3);   
         }
     }
 }
