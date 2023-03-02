@@ -23,15 +23,15 @@ foreach (var flight in sf.getFlightDates("Paris"))
     Console.WriteLine(flight);
 }
 
-//Console.WriteLine("**showFlightdate***");
-//sf.ShowFlightDetails(TestData.BoingPlane);
+Console.WriteLine("**showFlightdate***");
+sf.ShowFlightDetails(TestData.BoingPlane);
 
-//Console.WriteLine("**ProgrammedFlightNumber***");
-//sf.ProgrammedFlightNumber(new DateTime(2022, 01, 01));
+Console.WriteLine("**ProgrammedFlightNumber***");
+sf.ProgrammedFlightNumber(new DateTime(2022, 01, 01));
 
 
-//Console.WriteLine("**SeniorTravellers***");
-//foreach (var flight in sf.SeniorTravellers(TestData.flight1))
-//{
-//    Console.WriteLine(flight.BirthDate);
-//}
+Console.WriteLine("**SeniorTravellers***");
+foreach (var flight in sf.SeniorTravellers(TestData.flight1))
+{
+    Console.WriteLine(flight.BirthDate);
+}
