@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Runtime.InteropServices;
 using System.Text;
@@ -9,13 +11,23 @@ namespace AM.ApplicationCore.Domain
 {
     public  class Passenger
     {
-        public string PassportNumber { get; set; } 
+        [Key, StringLength(7)]
+        public string PassportNumber { get; set; }
+        [MinLength(3,ErrorMessage ="invalid username"),MaxLength(25)]
         public string FirstName { get; set;}
-        public string LastName { get; set;} 
-        public DateTime BirthDate { get; set;}    
-        public int TelNumber { get; set;} 
+
+        public string LastName { get; set;}
+        [DisplayName("Date of birth")]
+        [DataType(DataType.Date)]
+        public DateTime BirthDate { get; set;}
+        [RegularExpression(@"^[0-9]{8}$", ErrorMessage = "Invalid Phone Number!")]
+
+        public int TelNumber { get; set;}
+       // [DataType(DataType.EmailAddress)]
+        [EmailAddress]
+
         public string EmailAddress { get; set;}  
-        public int Id { get; set;}
+        //public int Id { get; set;}
         public IList<Flight> Flights { get; set; }
         public bool checkProfile(string firstName, string lastName)
         {
