@@ -38,7 +38,7 @@ namespace AM.ApplicationCore.Domain
             Capacity = capacity;    
             ManufactureDate = manufactureDate;  
         }
-
+        public IList<Flight> Flights { get; set; }
         public Plane()
         {
         }

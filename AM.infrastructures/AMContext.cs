@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using AM.ApplicationCore.Domain;
+using AM.infrastructures.configurations;
 using Microsoft.EntityFrameworkCore;
 
 
@@ -33,10 +34,17 @@ Initial Catalog=AirportManagementDB;Integrated Security=true");
 
         }
         // 2 commandes pour le lancement et la generation du base 
-                //  1 commend : add-migration Nom_mig
-                //  2 command update-database
-                // install Microsoft.EntityFrameworkCore.tools fl AM.infrast
-                // install Microsoft.EntityFrameworkCore.Desdign dans AM.console 
+        //  1 commend : add-migration Nom_mig
+        //  2 command update-database
+        // install Microsoft.EntityFrameworkCore.tools fl AM.infrast
+        // install Microsoft.EntityFrameworkCore.Desdign dans AM.console 
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.ApplyConfiguration(new PlaneConfiguration());
+
+            modelBuilder.ApplyConfiguration(new FlightConfiguration());
+
+        }
 
     }
 }
