@@ -22,6 +22,8 @@ namespace AM.infrastructures
         public DbSet<Plane> Planes { get; set; }
         public DbSet<Staff> Staffs { get; set; }
         public DbSet<Passenger> Passengers { get; set; }
+        public DbSet<Ticket> Ticket { get; set; }
+        public DbSet<ReservationTicket> ReservationTicket { get; set; }
         // 4 etape : fournir la chaine de connexion ( nom db + nom serveur )
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
@@ -29,8 +31,14 @@ namespace AM.infrastructures
             // le source local ( pas d utilisation de wamp ou xamp)
             // Catalog= Nom de base de donnés
             optionsBuilder.UseSqlServer(@"Data Source=(localdb)\mssqllocaldb;
-Initial Catalog=AirportManagementDB;Integrated Security=true");
+Initial Catalog=AirportManagementBase2;Integrated Security=true");
             base.OnConfiguring(optionsBuilder);
+
+
+
+
+
+
 
         }
         // 2 commandes pour le lancement et la generation du base 
@@ -41,9 +49,16 @@ Initial Catalog=AirportManagementDB;Integrated Security=true");
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.ApplyConfiguration(new PlaneConfiguration());
+            // equivalente lel fichier.0 PlaneConfiguration 
 
             modelBuilder.ApplyConfiguration(new FlightConfiguration());
 
+            modelBuilder.Entity<ReservationTicket>().HasKey(p => new
+            {
+                p.PassengerFk,
+                p.TicketFk,
+                p.DateReservation
+            });
         }
 
     }

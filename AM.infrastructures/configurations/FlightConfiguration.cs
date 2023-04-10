@@ -21,7 +21,7 @@ namespace AM.infrastructures.configurations
             builder.HasOne(f => f.Plane).WithMany(p => p.Flights).
                 HasForeignKey(p=>p.PlaneFk)
                 .OnDelete(DeleteBehavior.Cascade);
-
+            // equivalente [ForeignKey("PlaneFk")]
         }
     }
 }

@@ -29,6 +29,8 @@ namespace AM.ApplicationCore.Domain
         public string EmailAddress { get; set;}  
         //public int Id { get; set;}
         public IList<Flight> Flights { get; set; }
+        public IList<ReservationTicket> Reservations { get; set; }
+
         public bool checkProfile(string firstName, string lastName)
         {
             return FirstName== firstName && LastName == lastName;
